@@ -10,7 +10,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/PrasoonaOne/vipro-react-appln.git'
+                git 'https://github.com/PrasoonaOne/myproj-react-appln.git'
             }
         }
 
