@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     tools {
@@ -7,7 +6,6 @@ pipeline {
     }
 
     stages {
-
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/PrasoonaOne/myproj-react-appln.git'
@@ -16,33 +14,32 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Build Vite App') {
             steps {
-                sh 'npm run build'
+                bat 'npm run build'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t vite-react-app .'
+                bat 'docker build -t vite-react-app .'
             }
         }
 
         stage('Remove Old Container') {
             steps {
-                sh 'docker rm -f vite-react-container || true'
+                bat 'docker rm -f vite-react-container'
             }
         }
 
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 3000:3000 --name vite-react-container vite-react-app'
+                bat 'docker run -d -p 3000:3000 --name vite-react-container vite-react-app'
             }
         }
-
     }
 }
