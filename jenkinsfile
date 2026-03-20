@@ -3,14 +3,14 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node20"
+        nodejs "node18"
     }
 
     stages {
 
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/PrasoonaOne/myproj-react-appln.git'
+                git 'https://github.com/PrasoonaOne/vipro-react-appln.git'
             }
         }
 
